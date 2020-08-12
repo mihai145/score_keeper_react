@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import AllMatches from './components/AllMatches';
 import AddTeam from './components/AddTeam';
 import AddMatch from './components/AddMatch';
+import EditMatch from './components/EditMatch';
 
 import {
   BrowserRouter as Router,
@@ -27,6 +28,10 @@ function App() {
 
           <Route exact path="/addMatch">
             <AddMatch />
+          </Route>
+
+          <Route path="/editMatch/:matchId">
+            <EditMatch />
           </Route>
 
       </Switch>

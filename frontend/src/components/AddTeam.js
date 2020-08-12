@@ -31,13 +31,16 @@ export default class AddTeam extends React.Component {
         e.preventDefault();
 
         axios.post("http://localhost:5000/team/add", {name: this.state.name, country: this.state.country})
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-
-        this.setState({
-            name : "",
-            country : ""
-        });
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+            .finally(() => {
+                this.setState({
+                    name : "",
+                    country : ""
+                });
+            })
     }
 
     render() {

@@ -11,7 +11,8 @@ app.use(cors());
 
 mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 mongoose.set('useCreateIndex', true);
 

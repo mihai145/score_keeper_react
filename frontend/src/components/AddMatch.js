@@ -72,7 +72,6 @@ export default class AddMatch extends React.Component {
                 score2 : this.state.score2
             });
             console.log(res);
-
             window.location = "/";
         } catch (err) {
             console.log(err);
