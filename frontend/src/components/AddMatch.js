@@ -23,7 +23,7 @@ export default class AddMatch extends React.Component {
     componentDidMount() {
         axios.get("http://localhost:5000/team")
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({
                     team1: res.data[0].name,
                     team2: res.data[1].name,
@@ -57,13 +57,26 @@ export default class AddMatch extends React.Component {
         });
     }
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
 
-        console.log(this.state.team1);
-        console.log(this.state.team2);
-        console.log(this.state.score1);
-        console.log(this.state.score2);
+        try {
+            const country1 = await axios.get("http://localhost:5000/team/whichCountry/" + this.state.team1);
+            const country2 = await axios.get("http://localhost:5000/team/whichCountry/" + this.state.team2);
+            const res = await axios.post("http://localhost:5000/match/add", {
+                team1 : this.state.team1,
+                country1 : country1.data.country,
+                team2 : this.state.team2,
+                country2 : country2.data.country,
+                score1 : this.state.score1, 
+                score2 : this.state.score2
+            });
+            console.log(res);
+
+            window.location = "/";
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     render() {

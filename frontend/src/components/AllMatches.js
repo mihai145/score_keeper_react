@@ -47,7 +47,7 @@ export default class AllMatches extends React.Component {
     componentDidMount() {
         axios.get("http://localhost:5000/match")
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({
                     matches: res.data
                 });
